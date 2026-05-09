@@ -1,0 +1,48 @@
+body { font-family: sans-serif; background: #121212; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+.container { text-align: center; width: 90%; max-width: 500px; }
+.status { font-size: 0.9em; margin-bottom: 20px; color: #888; }
+.chat-box { display: flex; gap: 10px; }
+
+.chat-history {
+    height: 300px;
+    overflow-y: auto;
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 80%;
+    line-height: 1.4;
+    font-size: 0.95em;
+}
+
+.user {
+    align-self: flex-end;
+    background: #007AFF;
+    color: white;
+}
+
+.ai {
+    align-self: flex-start;
+    background: #333;
+    color: #e0e0e0;
+}
+
+/* Scrollbar Styling */
+.chat-history::-webkit-scrollbar { width: 6px; }
+.chat-history::-webkit-scrollbar-thumb { background: #444; border-radius: 10px; }
+
+
+
+input { flex: 1; padding: 12px; border-radius: 8px; border: 1px solid #333; background: #222; color: white; }
+button { padding: 12px 20px; border-radius: 8px; border: none; background: #007AFF; color: white; cursor: pointer; }
+button:disabled { background: #444; }
+.hint { font-size: 0.7em; color: #555; margin-top: 20px; }

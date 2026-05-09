@@ -1,0 +1,39 @@
+services:
+  # --- TTS Service (CPU-Based) ---
+  kokoro:
+    image: ghcr.io/remsky/kokoro-fastapi-cpu:latest
+    container_name: kokoro-tts
+    restart: unless-stopped
+    # Internal port for backend communication
+    expose:
+      - "8800"
+
+  # --- Backend Orchestrator (FastAPI) ---
+  backend:
+    build: 
+      context: ./backend
+    container_name: ai-backend
+    restart: unless-stopped
+    depends_on:
+      - kokoro
+    ports:
+      - "8000:8000"
+    environment:
+      # host.docker.internal allows Docker to talk to your Windows Ollama app
+      - OLLAMA_HOST=http://host.docker.internal:11434
+      # - OLLAMA_HOST=http://localhost:11434
+      - KOKORO_HOST=http://kokoro:8880
+      - LOG_LEVEL=DEBUG
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  # --- Frontend (Simple Web Server) ---
+  frontend:
+    build:
+      context: ./frontend
+    container_name: ai-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
