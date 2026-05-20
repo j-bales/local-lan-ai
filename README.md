@@ -1,6 +1,6 @@
 # Local LAN Conversational AI
 
-A fully local, GPU-accelerated AI assistant accessible over your home network.
+A fully local, GPU-accelerated AI assistant accessible over your home network that talks to you with generated voice.
 
 This is currently built/configured for deplyoment to a **Windows Host**, but should be easily replicated on Linux since it's just using Docker containers and Ollama. 
 
@@ -8,7 +8,7 @@ Ollama is currently deployed naitively on the host mainly because my host has an
 
 ### Tech Stack
 - **LLM:** Ollama (Llama 3 is an easy small model to deploy)
-- **TTS:** Kokoro (Local, CPU-optimized)
+- **TTS:** Kokoro (Local, CPU-optimized, for voice generation)
 - **Backend:** FastAPI (Python)
 - **Frontend:** Straight Vanilla JavaScript + Web Audio API
 - **Deployment:** Docker Compose
